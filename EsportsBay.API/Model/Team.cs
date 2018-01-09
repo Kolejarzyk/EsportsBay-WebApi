@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace EsportsBay.API.Model
 {
-    public class Team
+    public class Team : BaseEntity
     {
     }
 }
