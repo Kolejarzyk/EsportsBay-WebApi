@@ -35,6 +35,7 @@ namespace EsportsBay.API
                   options.UseSqlServer(Configuration.GetConnectionString("DataContext")));
 
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IMatchRepository, MatchRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

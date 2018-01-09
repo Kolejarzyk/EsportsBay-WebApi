@@ -14,6 +14,8 @@ namespace EsportsBay.API
         {
             CreateMap<User, UserDto>();
             CreateMap<UserDto, User>();
+            CreateMap<Match, MatchDto>();
+            CreateMap<MatchDto, Match>();
         }
     }
 }

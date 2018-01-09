@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace EsportsBay.API.Model
 {
-    public class Match
+    public class Match : BaseEntity
     {
         public string Description { get; set; }
         public int ScoreTeam1 { get; set; }
