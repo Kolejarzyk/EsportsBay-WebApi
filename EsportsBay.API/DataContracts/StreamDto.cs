@@ -7,5 +7,8 @@ namespace EsportsBay.API.DataContracts
 {
     public class StreamDto
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Url { get; set; }
     }
 }

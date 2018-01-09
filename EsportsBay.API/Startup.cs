@@ -36,6 +36,10 @@ namespace EsportsBay.API
 
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IMatchRepository, MatchRepository>();
+            services.AddScoped<IStreamRepository, StreamRepository>();
+            services.AddScoped<ITeamRepository, TeamRepository>();
+            services.AddScoped<ITournamentRepository, TournamentRepository>();
+            services.AddScoped<ILogRepository, LogRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

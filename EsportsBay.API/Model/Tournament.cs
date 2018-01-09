@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace EsportsBay.API.Model
 {
-    public class Tournament
+    public class Tournament : BaseEntity
     {
         public DateTime StartOfEvent { get; set; }
 

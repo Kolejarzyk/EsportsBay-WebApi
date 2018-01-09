@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace EsportsBay.API.Model
 {
-    public class Log
+    public class Log : BaseEntity
     {
         public string Content { get; set; }
         public DateTime Date { get; set; }

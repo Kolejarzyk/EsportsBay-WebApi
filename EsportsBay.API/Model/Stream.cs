@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace EsportsBay.API.Model
 {
-    public class Stream
+    public class Stream : BaseEntity
     {
 
         public string Name { get; set; }

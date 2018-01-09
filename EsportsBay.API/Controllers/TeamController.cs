@@ -10,25 +10,23 @@ using System.Threading.Tasks;
 
 namespace EsportsBay.API.Controllers
 {
-    [Produces("application/json")]
-    [Route("api/[controller]")]
-    public class MatchController : Controller
+    public class TeamController : Controller
     {
         private IMapper _mapper;
-        private IMatchRepository _repository;
+        private ITeamRepository _repository;
 
-        public MatchController(IMapper mapper, IMatchRepository repository)
+        public TeamController(ITeamRepository repository, IMapper mapper)
         {
-            this._mapper = mapper;
             this._repository = repository;
+            this._mapper = mapper;
         }
 
         [HttpGet]
-        public IEnumerable<MatchDto> GetAll()
+        public IEnumerable<TeamDto> GetAll()
         {
             var matchList = _repository.GetAll();
 
-            var match = _mapper.Map<IEnumerable<Match>, IEnumerable<MatchDto>>(matchList);
+            var match = _mapper.Map<IEnumerable<Team>, IEnumerable<TeamDto>>(matchList);
 
             return match;
         }
@@ -37,7 +35,7 @@ namespace EsportsBay.API.Controllers
         public IActionResult GetById(long id)
         {
             var item = _repository.Get(id);
-            var model = _mapper.Map<Match, MatchDto>(item);
+            var model = _mapper.Map<Team, TeamDto>(item);
             if (item == null)
             {
                 return NotFound();
@@ -46,9 +44,9 @@ namespace EsportsBay.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] MatchDto item)
+        public IActionResult Create([FromBody] TeamDto item)
         {
-            var model = _mapper.Map<MatchDto, Match>(item);
+            var model = _mapper.Map<TeamDto, Team>(item);
             if (model == null)
             {
                 return BadRequest();
@@ -59,10 +57,10 @@ namespace EsportsBay.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody]MatchDto match)
+        public IActionResult Put(int id, [FromBody]TeamDto team)
         {
-            var model = _mapper.Map<MatchDto, Match>(match);
-            if (match == null || match.Id != id)
+            var model = _mapper.Map<TeamDto, Team>(team);
+            if (team == null || team.Id != id)
             {
                 return BadRequest();
             }
@@ -72,12 +70,11 @@ namespace EsportsBay.API.Controllers
 
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(MatchDto user)
+        public IActionResult Delete(TeamDto team)
         {
-            var model = _mapper.Map<MatchDto, Match>(user);
+            var model = _mapper.Map<TeamDto, Team>(team);
             _repository.Delete(model);
             return new NoContentResult();
         }
-
     }
 }

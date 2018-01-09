@@ -10,34 +10,32 @@ using System.Threading.Tasks;
 
 namespace EsportsBay.API.Controllers
 {
-    [Produces("application/json")]
-    [Route("api/[controller]")]
-    public class MatchController : Controller
+    public class TournamentController : Controller
     {
         private IMapper _mapper;
-        private IMatchRepository _repository;
+        private ITournamentRepository _repository;
 
-        public MatchController(IMapper mapper, IMatchRepository repository)
+        public TournamentController(IMapper mapper, ITournamentRepository repository)
         {
             this._mapper = mapper;
             this._repository = repository;
         }
 
         [HttpGet]
-        public IEnumerable<MatchDto> GetAll()
+        public IEnumerable<TournamentDto> GetAll()
         {
-            var matchList = _repository.GetAll();
+            var logList = _repository.GetAll();
 
-            var match = _mapper.Map<IEnumerable<Match>, IEnumerable<MatchDto>>(matchList);
+            var logs = _mapper.Map<IEnumerable<Tournament>, IEnumerable<TournamentDto>>(logList);
 
-            return match;
+            return logs;
         }
 
         [HttpGet("{id}", Name = "GetById")]
         public IActionResult GetById(long id)
         {
             var item = _repository.Get(id);
-            var model = _mapper.Map<Match, MatchDto>(item);
+            var model = _mapper.Map<Tournament, TournamentDto>(item);
             if (item == null)
             {
                 return NotFound();
@@ -46,23 +44,23 @@ namespace EsportsBay.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] MatchDto item)
+        public IActionResult Create([FromBody] TournamentDto item)
         {
-            var model = _mapper.Map<MatchDto, Match>(item);
+            var model = _mapper.Map<TournamentDto, Tournament>(item);
             if (model == null)
             {
                 return BadRequest();
             }
 
             _repository.Insert(model);
-            return CreatedAtRoute("GetById", new { id = item.Id }, item);
+            return CreatedAtRoute("GetById", new { id = model.Id }, item);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody]MatchDto match)
+        public IActionResult Put(int id, [FromBody]TournamentDto tournament)
         {
-            var model = _mapper.Map<MatchDto, Match>(match);
-            if (match == null || match.Id != id)
+            var model = _mapper.Map<TournamentDto, Tournament>(tournament);
+            if (tournament == null || tournament.Id != id)
             {
                 return BadRequest();
             }
@@ -72,12 +70,11 @@ namespace EsportsBay.API.Controllers
 
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(MatchDto user)
+        public IActionResult Delete(TournamentDto log)
         {
-            var model = _mapper.Map<MatchDto, Match>(user);
+            var model = _mapper.Map<TournamentDto, Tournament>(log);
             _repository.Delete(model);
             return new NoContentResult();
         }
-
     }
 }
