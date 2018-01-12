@@ -32,7 +32,17 @@ namespace EsportsBay.API.Controllers
             return streams;
         }
 
-        [HttpGet("id",Name ="GetById")]
+        [HttpGet("game", Name="SearchByGame")]
+        public IActionResult GetByGame(string game)
+        {
+            var item = _repository.SearchByGameStream(game);
+
+            var stream = _mapper.Map<IEnumerable<Stream>, IEnumerable<StreamDto>>(item);
+
+            return new JsonResult(stream);
+        }
+
+        [HttpGet("id",Name ="GetByStreamId")]
         public IActionResult GetById(long id)
         {
             var item = _repository.Get(id);
@@ -57,7 +67,7 @@ namespace EsportsBay.API.Controllers
             }
 
             _repository.Insert(item);
-            return CreatedAtRoute("GetById", new { id = item.Id }, item
+            return CreatedAtRoute("GetByStreamId", new { id = item.Id }, item);
         }
 
         [HttpPut]

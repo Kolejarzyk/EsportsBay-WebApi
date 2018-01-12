@@ -75,21 +75,21 @@ namespace EsportsBay.API.Controllers
 
         }
 
-        [AllowAnonymous]
-        [HttpPost]
-        public IActionResult Register([FromBody]UserDto userDto)
-        {
-            var user = _mapper.Map<User>(userDto);
-            try
-            {
-                _repository.Insert(user, userDto);
-                return Ok();
-            }
-            catch(ArgumentException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+        //[AllowAnonymous]
+        //[HttpPost]
+        //public IActionResult Register([FromBody]UserDto userDto)
+        //{
+        //    var user = _mapper.Map<User>(userDto);
+        //    try
+        //    {
+        //        _repository.Insert(user, userDto);
+        //        return Ok();
+        //    }
+        //    catch(ArgumentException ex)
+        //    {
+        //        return BadRequest(ex.Message);
+        //    }
+        //}
 
         [HttpGet]
         public IEnumerable<UserDto> GetAll()

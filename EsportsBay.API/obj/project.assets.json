@@ -1783,6 +1783,19 @@
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Relational.dll": {}
         }
       },
+      "Microsoft.EntityFrameworkCore.Relational.Design/1.1.5": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "1.1.5",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.Design.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.Design.dll": {}
+        }
+      },
       "Microsoft.EntityFrameworkCore.Sqlite/2.0.1": {
         "type": "package",
         "dependencies": {
@@ -1814,6 +1827,20 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.SqlServer.dll": {}
+        }
+      },
+      "Microsoft.EntityFrameworkCore.SqlServer.Design/1.1.5": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational.Design": "1.1.5",
+          "Microsoft.EntityFrameworkCore.SqlServer": "1.1.5",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microsoft.EntityFrameworkCore.SqlServer.Design.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.EntityFrameworkCore.SqlServer.Design.dll": {}
         }
       },
       "Microsoft.EntityFrameworkCore.Tools/2.0.1": {
@@ -6475,6 +6502,19 @@
         "microsoft.entityframeworkcore.relational.nuspec"
       ]
     },
+    "Microsoft.EntityFrameworkCore.Relational.Design/1.1.5": {
+      "sha512": "WqPO8M9Ho0CiJ1tnIgWgXoAPt8/oIE8lcELZYbvmiVyr59f395HmHQhGCXti0/DePgPb7N6EHTIgCczRyuqIkg==",
+      "type": "package",
+      "path": "microsoft.entityframeworkcore.relational.design/1.1.5",
+      "files": [
+        "lib/net451/Microsoft.EntityFrameworkCore.Relational.Design.dll",
+        "lib/net451/Microsoft.EntityFrameworkCore.Relational.Design.xml",
+        "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.Design.dll",
+        "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.Design.xml",
+        "microsoft.entityframeworkcore.relational.design.1.1.5.nupkg.sha512",
+        "microsoft.entityframeworkcore.relational.design.nuspec"
+      ]
+    },
     "Microsoft.EntityFrameworkCore.Sqlite/2.0.1": {
       "sha512": "DviCFjsYHkLHQMRKUFEG/rx65NbaP0NGFskBnw1t9lPdkkLG8KoAzxOs4KvTHnuykPHs6V7qR9f703dH6WCwkQ==",
       "type": "package",
@@ -6504,6 +6544,19 @@
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.SqlServer.xml",
         "microsoft.entityframeworkcore.sqlserver.2.0.1.nupkg.sha512",
         "microsoft.entityframeworkcore.sqlserver.nuspec"
+      ]
+    },
+    "Microsoft.EntityFrameworkCore.SqlServer.Design/1.1.5": {
+      "sha512": "5Pzxg+WEzPivrBYur4uRTQt+c3kWOebWq51nkmkuOtK2O5hjCKS3Lw6Mln2iI/ae7rJcvVW6hUd3rCgctFSmmw==",
+      "type": "package",
+      "path": "microsoft.entityframeworkcore.sqlserver.design/1.1.5",
+      "files": [
+        "lib/net451/Microsoft.EntityFrameworkCore.SqlServer.Design.dll",
+        "lib/net451/Microsoft.EntityFrameworkCore.SqlServer.Design.xml",
+        "lib/netstandard1.3/Microsoft.EntityFrameworkCore.SqlServer.Design.dll",
+        "lib/netstandard1.3/Microsoft.EntityFrameworkCore.SqlServer.Design.xml",
+        "microsoft.entityframeworkcore.sqlserver.design.1.1.5.nupkg.sha512",
+        "microsoft.entityframeworkcore.sqlserver.design.nuspec"
       ]
     },
     "Microsoft.EntityFrameworkCore.Tools/2.0.1": {
@@ -8182,7 +8235,7 @@
       ]
     },
     "runtime.native.System.Net.Security/4.3.0": {
-      "sha512": "mk3pV5nNWXGG3OX0pPZqyMZvupxOU34O1/NJTDwVuLgDUQzGMFmci0WuRqtXqZ/PdmtRaDQLBSJYQ+sW/IqDRw==",
+      "sha512": "M2nN92ePS8BgQ2oi6Jj3PlTUzadYSIWLdZrHY1n1ZcW9o4wAQQ6W+aQ2lfq1ysZQfVCgDwY58alUdowrzezztg==",
       "type": "package",
       "path": "runtime.native.system.net.security/4.3.0",
       "files": [
@@ -10190,7 +10243,7 @@
       ]
     },
     "System.Linq.Parallel/4.3.0": {
-      "sha512": "cKxa/QjY86IvbLFE/Y2+41Sq9jHOt5RtuZ1CBLSHaZBkhaqPYJqIyX/SZ8F3VR7uljxqxk5yzXTHy1XXGpymSg==",
+      "sha512": "td7x21K8LalpjTWCzW/nQboQIFbq9i0r+PCyBBCdLWWnm4NBcdN18vpz/G9hCpUaCIfRL+ZxJNVTywlNlB1aLQ==",
       "type": "package",
       "path": "system.linq.parallel/4.3.0",
       "files": [
@@ -10245,7 +10298,7 @@
       ]
     },
     "System.Linq.Queryable/4.3.0": {
-      "sha512": "yHIsJ2Pu1lQo9t5eChas8G0tAlmytslnDAoDyfBv/q3ofjkS5/+kUTnhkVaTGPLk9718qnQtPEc+AA7aBiBW3Q==",
+      "sha512": "In1Bmmvl/j52yPu3xgakQSI0YIckPUr870w4K5+Lak3JCCa8hl+my65lABOuKfYs4ugmZy25ScFerC4nz8+b6g==",
       "type": "package",
       "path": "system.linq.queryable/4.3.0",
       "files": [
@@ -10499,7 +10552,7 @@
       ]
     },
     "System.Net.Security/4.3.0": {
-      "sha512": "Rgc/br2VvwntzHCQY7YbCio59btSzgpY7/5tM4Tf1RPxJSMwXYZTijK7eVDkRejPXALPSzYbLmQFbXbMjAgGYg==",
+      "sha512": "IgJKNfALqw7JRWp5LMQ5SWHNKvXVz094U6wNE3c1i8bOkMQvgBL+MMQuNt3xl9Qg9iWpj3lFxPZEY6XHmROjMQ==",
       "type": "package",
       "path": "system.net.security/4.3.0",
       "files": [
@@ -12610,7 +12663,7 @@
       ]
     },
     "System.Threading.Tasks.Parallel/4.3.0": {
-      "sha512": "miR6zoi5bw+FbztIVn715suW7B5aJlHfMZG4UKO0tDFXkI1fjMBmIRXpxe7Ey7jw6tuWPxIcGElTDXmCWoPCPQ==",
+      "sha512": "cbjBNZHf/vQCfcdhzx7knsiygoCKgxL8mZOeocXZn5gWhCdzHIq6bYNKWX0LAJCWYP7bds4yBK8p06YkP0oa0g==",
       "type": "package",
       "path": "system.threading.tasks.parallel/4.3.0",
       "files": [
@@ -13182,13 +13235,16 @@
       "AutoMapper >= 6.2.2",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 3.2.0",
       "Microsoft.AspNetCore.All >= 2.0.3",
+      "Microsoft.EntityFrameworkCore >= 2.0.1",
+      "Microsoft.EntityFrameworkCore.Design >= 2.0.1",
+      "Microsoft.EntityFrameworkCore.SqlServer.Design >= 1.1.5",
+      "Microsoft.EntityFrameworkCore.Tools >= 2.0.1",
       "Microsoft.NETCore.App >= 2.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.1"
     ]
   },
   "packageFolders": {
     "C:\\Users\\Kolejarz\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -13197,20 +13253,18 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kolejarz\\Documents\\Visual Studio 2017\\Projects\\EsportsBay.API\\EsportsBay.API\\EsportsBay.API.csproj",
+      "projectUniqueName": "C:\\Users\\Kolejarz\\Documents\\Project\\EsportsBay-WebApi\\EsportsBay.API\\EsportsBay.API.csproj",
       "projectName": "EsportsBay.API",
-      "projectPath": "C:\\Users\\Kolejarz\\Documents\\Visual Studio 2017\\Projects\\EsportsBay.API\\EsportsBay.API\\EsportsBay.API.csproj",
+      "projectPath": "C:\\Users\\Kolejarz\\Documents\\Project\\EsportsBay-WebApi\\EsportsBay.API\\EsportsBay.API.csproj",
       "packagesPath": "C:\\Users\\Kolejarz\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kolejarz\\Documents\\Visual Studio 2017\\Projects\\EsportsBay.API\\EsportsBay.API\\obj\\",
+      "outputPath": "C:\\Users\\Kolejarz\\Documents\\Project\\EsportsBay-WebApi\\EsportsBay.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
         "C:\\Users\\Kolejarz\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
@@ -13244,6 +13298,22 @@
           "Microsoft.AspNetCore.All": {
             "target": "Package",
             "version": "[2.0.3, )"
+          },
+          "Microsoft.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[2.0.1, )"
+          },
+          "Microsoft.EntityFrameworkCore.Design": {
+            "target": "Package",
+            "version": "[2.0.1, )"
+          },
+          "Microsoft.EntityFrameworkCore.SqlServer.Design": {
+            "target": "Package",
+            "version": "[1.1.5, )"
+          },
+          "Microsoft.EntityFrameworkCore.Tools": {
+            "target": "Package",
+            "version": "[2.0.1, )"
           },
           "Microsoft.NETCore.App": {
             "target": "Package",

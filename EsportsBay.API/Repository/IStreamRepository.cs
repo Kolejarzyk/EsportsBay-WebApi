@@ -9,5 +9,8 @@ namespace EsportsBay.API.Repository
 {
     public interface IStreamRepository : IRepository<Stream>
     {
+        IEnumerable<Stream> SearchByGameStream(string game);
+
+       
     }
 }

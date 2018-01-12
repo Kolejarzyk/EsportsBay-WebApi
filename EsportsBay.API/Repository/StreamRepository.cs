@@ -14,5 +14,12 @@ namespace EsportsBay.API.Repository
         {
 
         }
+
+        public IEnumerable<Stream> SearchByGameStream(string game)
+        {
+            yield return _context.Set<Stream>().Find(game);
+        }
+
+     
     }
 }

@@ -6,3 +6,14 @@ C:\Users\Kolejarz\Documents\Visual Studio 2017\Projects\EsportsBay.API\EsportsBa
 C:\Users\Kolejarz\Documents\Visual Studio 2017\Projects\EsportsBay.API\EsportsBay.API\obj\Debug\netcoreapp2.0\EsportsBay.API.csproj.CoreCompileInputs.cache
 C:\Users\Kolejarz\Documents\Visual Studio 2017\Projects\EsportsBay.API\EsportsBay.API\obj\Debug\netcoreapp2.0\EsportsBay.API.AssemblyInfoInputs.cache
 C:\Users\Kolejarz\Documents\Visual Studio 2017\Projects\EsportsBay.API\EsportsBay.API\obj\Debug\netcoreapp2.0\EsportsBay.API.AssemblyInfo.cs
+C:\Users\Kolejarz\Documents\Project\EsportsBay-WebApi\EsportsBay.API\obj\Debug\netcoreapp2.0\EsportsBay.API.csprojResolveAssemblyReference.cache
+C:\Users\Kolejarz\Documents\Project\EsportsBay-WebApi\EsportsBay.API\obj\Debug\netcoreapp2.0\EsportsBay.API.csproj.CoreCompileInputs.cache
+C:\Users\Kolejarz\Documents\Project\EsportsBay-WebApi\EsportsBay.API\obj\Debug\netcoreapp2.0\EsportsBay.API.AssemblyInfoInputs.cache
+C:\Users\Kolejarz\Documents\Project\EsportsBay-WebApi\EsportsBay.API\obj\Debug\netcoreapp2.0\EsportsBay.API.AssemblyInfo.cs
+C:\Users\Kolejarz\Documents\Project\EsportsBay-WebApi\EsportsBay.API\bin\Debug\netcoreapp2.0\EsportsBay.API.deps.json
+C:\Users\Kolejarz\Documents\Project\EsportsBay-WebApi\EsportsBay.API\bin\Debug\netcoreapp2.0\EsportsBay.API.runtimeconfig.json
+C:\Users\Kolejarz\Documents\Project\EsportsBay-WebApi\EsportsBay.API\bin\Debug\netcoreapp2.0\EsportsBay.API.runtimeconfig.dev.json
+C:\Users\Kolejarz\Documents\Project\EsportsBay-WebApi\EsportsBay.API\bin\Debug\netcoreapp2.0\EsportsBay.API.dll
+C:\Users\Kolejarz\Documents\Project\EsportsBay-WebApi\EsportsBay.API\bin\Debug\netcoreapp2.0\EsportsBay.API.pdb
+C:\Users\Kolejarz\Documents\Project\EsportsBay-WebApi\EsportsBay.API\obj\Debug\netcoreapp2.0\EsportsBay.API.dll
+C:\Users\Kolejarz\Documents\Project\EsportsBay-WebApi\EsportsBay.API\obj\Debug\netcoreapp2.0\EsportsBay.API.pdb

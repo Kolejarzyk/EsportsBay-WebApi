@@ -31,7 +31,7 @@ namespace EsportsBay.API.Controllers
             return logs;
         }
 
-        [HttpGet("{id}", Name = "GetById")]
+        [HttpGet("{id}", Name = "GetByTournamentId")]
         public IActionResult GetById(long id)
         {
             var item = _repository.Get(id);
@@ -53,7 +53,7 @@ namespace EsportsBay.API.Controllers
             }
 
             _repository.Insert(model);
-            return CreatedAtRoute("GetById", new { id = model.Id }, item);
+            return CreatedAtRoute("GetByTournamentId", new { id = model.Id }, item);
         }
 
         [HttpPut("{id}")]
