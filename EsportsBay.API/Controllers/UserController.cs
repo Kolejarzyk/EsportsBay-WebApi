@@ -82,10 +82,10 @@ namespace EsportsBay.API.Controllers
             var user = _mapper.Map<User>(userDto);
             try
             {
-                _repository.Insert(user, userDto);
+                _repository.Create(user, userDto.Password);
                 return Ok();
             }
-            catch(ArgumentException ex)
+            catch(ApplicationException ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -101,7 +101,7 @@ namespace EsportsBay.API.Controllers
             return users;
         }
 
-        [HttpGet("{id}", Name = "GetById")]
+        [HttpGet("{id}", Name = "GetUser")]
         public IActionResult GetById(long id)
         {
             var item = _repository.Get(id);
@@ -113,30 +113,23 @@ namespace EsportsBay.API.Controllers
             return new ObjectResult(model);
         }
 
-        [HttpPost]
-        public IActionResult Create([FromBody] UserDto item)
-        {
-            var model = _mapper.Map<UserDto, User>(item);
-            if (model == null)
-            {
-                return BadRequest();
-            }
-
-            _repository.Insert(model);
-            return CreatedAtRoute("GetById", new { id = item.Id }, item);
-        }
-
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody]UserDto user)
+        public IActionResult Update(int id, [FromBody]UserDto user)
         {
             var model = _mapper.Map<UserDto, User>(user);
-            if (user == null || user.Id != id)
+            model.Id = id;
+
+            try
             {
-                return BadRequest();
+                _repository.Update(model, user.Password);
+                return Ok();
             }
-            _repository.Update(model);
-            return new NoContentResult();
+            catch(ApplicationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+           
         }
 
 

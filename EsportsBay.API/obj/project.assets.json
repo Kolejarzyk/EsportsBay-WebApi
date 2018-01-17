@@ -13193,9 +13193,6 @@
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
       "projectUniqueName": "C:\\Users\\Kolejarz\\Documents\\Visual Studio 2017\\Projects\\EsportsBay.API\\EsportsBay.API\\EsportsBay.API.csproj",
       "projectName": "EsportsBay.API",

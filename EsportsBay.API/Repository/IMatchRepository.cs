@@ -9,7 +9,7 @@ namespace EsportsBay.API.Repository
     public interface IMatchRepository : IRepository<Match>
     {
 
-       void SearchByTeam(string teamName);
+        void SearchByTeam(string teamName);
         void SearchByTeam(string teamName, string teamName2);
     }
 }

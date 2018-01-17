@@ -57,7 +57,7 @@ namespace EsportsBay.API.Controllers
             }
 
             _repository.Insert(item);
-            return CreatedAtRoute("GetById", new { id = item.Id }, item
+            return CreatedAtRoute("GetById", new { id = item.Id }, item);
         }
 
         [HttpPut]
