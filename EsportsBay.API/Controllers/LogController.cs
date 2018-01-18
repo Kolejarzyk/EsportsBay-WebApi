@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 
 namespace EsportsBay.API.Controllers
 {
-
+    [Produces("application/json")]
+    [Route("api/[controller]")]
     public class LogController : Controller
     {
         private IMapper _mapper;
