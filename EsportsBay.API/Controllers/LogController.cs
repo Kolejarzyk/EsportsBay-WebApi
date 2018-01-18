@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 
 namespace EsportsBay.API.Controllers
 {
-
+    [Produces("application/json")]
+    [Route("api/[controller]")]
     public class LogController : Controller
     {
         private IMapper _mapper;
@@ -32,7 +33,7 @@ namespace EsportsBay.API.Controllers
             return logs;
         }
 
-        [HttpGet("{id}", Name = "GetById")]
+        [HttpGet("{id}", Name = "GetLog")]
         public IActionResult GetById(long id)
         {
             var item = _repository.Get(id);
@@ -54,7 +55,7 @@ namespace EsportsBay.API.Controllers
             }
 
             _repository.Insert(model);
-            return CreatedAtRoute("GetById", new { id = model.Id }, item);
+            return CreatedAtRoute("GetLog", new { id = model.Id }, item);
         }
 
         [HttpPut("{id}")]

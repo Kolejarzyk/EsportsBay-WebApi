@@ -22,18 +22,64 @@ namespace EsportsBay.API.Repository
 
             if (user == null)
                 return null;
-            if (!VerifyPasswordHash(password, user.PassswordHash, user.PasswrodSalt))
+            if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
                 return null;
 
             return user;
         }
 
-        public  void Create(User user, string password)
+        public User Create(User user, string password)
         {
-            if (true)
+            if (string.IsNullOrWhiteSpace(password))
             {
-
+                throw new ApplicationException("Password is required");
             }
+            if (_context.User.Any(x => x.Name == user.Name))
+                throw new ApplicationException("Username" + user.Name + "is already taken");
+
+            byte[] passwordHash, passwordSalt;
+
+            CreatePasswordHash(password, out passwordHash, out passwordSalt);
+
+            user.PasswordHash = passwordHash;
+            user.PasswordSalt = passwordSalt;
+
+            _context.User.Add(user);
+            _context.SaveChanges();
+
+            return user;
+        }
+
+        public void Update(User userParam, string password = null)
+        {
+            var user = _context.User.Find(userParam.Id);
+
+            if(user ==null)
+            {
+                throw new ApplicationException("User not found");
+            }
+
+            if(userParam.Name != user.Name)
+            {
+                if (_context.User.Any(x => x.Name == userParam.Name))
+                    throw new ApplicationException("Username" + userParam.Name + "is already taken");
+            }
+
+            user.FirstName = userParam.FirstName;
+            user.LastName = userParam.LastName;
+            user.Name = userParam.Name;
+
+            if(!string.IsNullOrWhiteSpace(password))
+            {
+                byte[] passwordHash, passwordSalt;
+                CreatePasswordHash(password, out passwordHash, out passwordSalt);
+
+                user.PasswordHash = passwordHash;
+                user.PasswordSalt = passwordSalt;
+            }
+
+            _context.User.Update(user);
+            _context.SaveChanges();
         }
 
         private static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)

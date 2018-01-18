@@ -13182,6 +13182,9 @@
       "AutoMapper >= 6.2.2",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 3.2.0",
       "Microsoft.AspNetCore.All >= 2.0.3",
+      "Microsoft.EntityFrameworkCore.Design >= 2.0.1",
+      "Microsoft.EntityFrameworkCore.SqlServer >= 2.0.1",
+      "Microsoft.EntityFrameworkCore.Tools >= 2.0.1",
       "Microsoft.NETCore.App >= 2.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.1"
     ]
@@ -13193,9 +13196,6 @@
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
       "projectUniqueName": "C:\\Users\\Kolejarz\\Documents\\Visual Studio 2017\\Projects\\EsportsBay.API\\EsportsBay.API\\EsportsBay.API.csproj",
       "projectName": "EsportsBay.API",
@@ -13244,6 +13244,18 @@
           "Microsoft.AspNetCore.All": {
             "target": "Package",
             "version": "[2.0.3, )"
+          },
+          "Microsoft.EntityFrameworkCore.Design": {
+            "target": "Package",
+            "version": "[2.0.1, )"
+          },
+          "Microsoft.EntityFrameworkCore.SqlServer": {
+            "target": "Package",
+            "version": "[2.0.1, )"
+          },
+          "Microsoft.EntityFrameworkCore.Tools": {
+            "target": "Package",
+            "version": "[2.0.1, )"
           },
           "Microsoft.NETCore.App": {
             "target": "Package",

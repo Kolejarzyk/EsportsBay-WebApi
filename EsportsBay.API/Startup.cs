@@ -12,6 +12,10 @@ using AutoMapper;
 using EsportsBay.API.Data;
 using Microsoft.EntityFrameworkCore;
 using EsportsBay.API.Repository;
+using EsportsBay.API.Helper;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace EsportsBay.API
 {
@@ -27,12 +31,12 @@ namespace EsportsBay.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();        
-            services.AddAutoMapper(x => x.AddProfile(new MappingProfile()));
+            services.AddCors();
+            services.AddAutoMapper(x => x.AddProfile(new MappingProfile()));      
             services.AddMvc();
 
             services.AddDbContext<DataContext>(options =>
-                  options.UseSqlServer(Configuration.GetConnectionString("DataContext")));
+                   options.UseSqlServer(Configuration.GetConnectionString("DataContext")));
 
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IMatchRepository, MatchRepository>();
@@ -40,17 +44,55 @@ namespace EsportsBay.API
             services.AddScoped<ITeamRepository, TeamRepository>();
             services.AddScoped<ITournamentRepository, TournamentRepository>();
             services.AddScoped<ILogRepository, LogRepository>();
+
+            var appSettingsSection = Configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appSettingsSection);
+
+            var appSettings = appSettingsSection.Get<AppSettings>();
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddDebug();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc();
+            app.UseCors(builder =>
+            {
+                builder.AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowAnyOrigin()
+                    .Build();
+            });
+
+            app.UseAuthentication();
+
+            app.UseMvcWithDefaultRoute();
         }
     }
 }

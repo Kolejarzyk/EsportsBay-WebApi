@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 
 namespace EsportsBay.API.Controllers
 {
+    [Produces("application/json")]
+    [Route("api/[controller]")]
     public class StreamController : Controller
     {
 
@@ -57,7 +59,7 @@ namespace EsportsBay.API.Controllers
             }
 
             _repository.Insert(item);
-            return CreatedAtRoute("GetById", new { id = item.Id }, item
+            return CreatedAtRoute("GetById", new { id = item.Id }, item);
         }
 
         [HttpPut]

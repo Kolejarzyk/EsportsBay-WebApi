@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 
 namespace EsportsBay.API.Controllers
 {
+    [Produces("application/json")]
+    [Route("api/[controller]")]
     public class TeamController : Controller
     {
         private IMapper _mapper;
@@ -31,7 +33,7 @@ namespace EsportsBay.API.Controllers
             return match;
         }
 
-        [HttpGet("{id}", Name = "GetById")]
+        [HttpGet("{id}", Name = "GetByTeam")]
         public IActionResult GetById(long id)
         {
             var item = _repository.Get(id);
@@ -53,7 +55,7 @@ namespace EsportsBay.API.Controllers
             }
 
             _repository.Insert(model);
-            return CreatedAtRoute("GetById", new { id = item.Id }, item);
+            return CreatedAtRoute("GetByTeam", new { id = item.Id }, item);
         }
 
         [HttpPut("{id}")]
