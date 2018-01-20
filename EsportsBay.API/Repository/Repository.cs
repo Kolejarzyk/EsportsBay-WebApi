@@ -1,4 +1,5 @@
 ﻿using EsportsBay.API.Data;
+using EsportsBay.API.Model;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EsportsBay.API.Repository
 {
-    public class Repository<T> : IRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : BaseEntity
     {
         protected readonly DataContext _context;
 
@@ -23,7 +24,7 @@ namespace EsportsBay.API.Repository
 
         public T Get(long id)
         {
-            return _context.Set<T>().Find(id);
+            return _context.Set<T>().FirstOrDefault(s => s.Id == id);
         }
 
         public IEnumerable<T> GetAll()

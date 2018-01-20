@@ -9,5 +9,10 @@ namespace EsportsBay.API.Repository
 {
     public interface IStreamRepository : IRepository<Stream>
     {
+        IEnumerable<Stream> GetStreamByGame(string game);
+
+        IEnumerable<Stream> GetStreamByLanguage(string language);
+
+
     }
 }

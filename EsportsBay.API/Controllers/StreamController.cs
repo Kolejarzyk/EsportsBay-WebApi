@@ -34,7 +34,7 @@ namespace EsportsBay.API.Controllers
             return streams;
         }
 
-        [HttpGet("id",Name ="GetById")]
+        [HttpGet("{id}",Name ="GetById")]
         public IActionResult GetById(long id)
         {
             var item = _repository.Get(id);
@@ -87,5 +87,27 @@ namespace EsportsBay.API.Controllers
             return new NoContentResult();
         }
 
+       [HttpGet("{game}")]
+       public IEnumerable<StreamDto> GetCSGOStream(string game)
+        {
+            var streamList = _repository.GetStreamByGame(game);
+
+            var streams = _mapper.Map<IEnumerable<Stream>, IEnumerable<StreamDto>>(streamList);
+
+            return streams;
+
+        }
+
+
+        [HttpGet("{language}")]
+        [Route("api/Stream/lang/{language}")]
+        public IEnumerable<StreamDto> GetStreamLang(string language)
+        {
+            var streamList = _repository.GetStreamByLanguage(language);
+
+            var streams = _mapper.Map<IEnumerable<Stream>, IEnumerable<StreamDto>>(streamList);
+
+            return streams;
+        }
     }
 }
