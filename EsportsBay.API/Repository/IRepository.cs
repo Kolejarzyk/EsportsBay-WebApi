@@ -1,11 +1,12 @@
-﻿using System;
+﻿using EsportsBay.API.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace EsportsBay.API.Repository
 {
-    public interface IRepository<T>  where T : class
+    public interface IRepository<T>  where T : BaseEntity
     {
         IEnumerable<T> GetAll();
         T Get(long id);

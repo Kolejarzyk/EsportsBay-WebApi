@@ -12,7 +12,17 @@ namespace EsportsBay.API.Repository
     {
         public StreamRepository(DataContext context) : base(context)
         {
-
         }
+
+        public IEnumerable<Stream> GetStreamByGame(string game)
+        {
+            return _context.Set<Stream>().Where(x => x.Game.Equals(game)).OrderBy(o => o.DisplayName).ToList();
+        }
+
+        public IEnumerable<Stream> GetStreamByLanguage(string language)
+        {
+            return _context.Set<Stream>().Where(x => x.Language.Equals(language)).OrderBy(o => o.DisplayName).ToList();
+        }
+
     }
 }
