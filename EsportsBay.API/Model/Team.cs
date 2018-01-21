@@ -8,7 +8,7 @@ namespace EsportsBay.API.Model
     public class Team : BaseEntity
     {
 
-        public string TeamName { get; set; }
+        public string Name { get; set; }
 
     }
 }

@@ -46,40 +46,37 @@ namespace EsportsBay.API.Controllers
 
             if (user == null)
                 return Unauthorized();
+
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
-
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
                     new Claim(ClaimTypes.Name, user.Id.ToString())
                 }),
-
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
-
             var token = tokenHandler.CreateToken(tokenDescriptor);
             var tokenString = tokenHandler.WriteToken(token);
 
+            // return basic user info (without password) and token to store client side
             return Ok(new
             {
                 Id = user.Id,
-                UserName = user.Name,
+                Username = user.Username,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Token = tokenString
             });
-
-
         }
 
         [AllowAnonymous]
         [HttpPost]
         public IActionResult Register([FromBody]UserDto userDto)
         {
-            var user = _mapper.Map<User>(userDto);
+            var user = _mapper.Map<UserDto,User>(userDto);
             try
             {
                 _repository.Create(user, userDto.Password);

@@ -18,7 +18,7 @@ namespace EsportsBay.API.Repository
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
                 return null;
 
-            var user = _context.User.SingleOrDefault(x => x.Name == username);
+            var user = _context.User.SingleOrDefault(x => x.Username == username);
 
             if (user == null)
                 return null;
@@ -28,14 +28,15 @@ namespace EsportsBay.API.Repository
             return user;
         }
 
+
         public User Create(User user, string password)
         {
             if (string.IsNullOrWhiteSpace(password))
             {
                 throw new ApplicationException("Password is required");
             }
-            if (_context.User.Any(x => x.Name == user.Name))
-                throw new ApplicationException("Username" + user.Name + "is already taken");
+            if (_context.User.Any(x => x.Username == user.Username))
+                throw new ApplicationException("Username" + user.Username + "is already taken");
 
             byte[] passwordHash, passwordSalt;
 
@@ -59,15 +60,15 @@ namespace EsportsBay.API.Repository
                 throw new ApplicationException("User not found");
             }
 
-            if(userParam.Name != user.Name)
+            if(userParam.Username != user.Username)
             {
-                if (_context.User.Any(x => x.Name == userParam.Name))
-                    throw new ApplicationException("Username" + userParam.Name + "is already taken");
+                if (_context.User.Any(x => x.Username == userParam.Username))
+                    throw new ApplicationException("Username" + userParam.Username + "is already taken");
             }
 
             user.FirstName = userParam.FirstName;
             user.LastName = userParam.LastName;
-            user.Name = userParam.Name;
+            user.Username = userParam.Username;
 
             if(!string.IsNullOrWhiteSpace(password))
             {
@@ -85,33 +86,32 @@ namespace EsportsBay.API.Repository
         private static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
             if (password == null) throw new ArgumentNullException("password");
-            if (string.IsNullOrWhiteSpace(password)) throw new ArgumentException("Value cannot be empty or has a white space ", "password");
-
+            if (string.IsNullOrWhiteSpace(password)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "password");
+ 
             using (var hmac = new System.Security.Cryptography.HMACSHA512())
             {
                 passwordSalt = hmac.Key;
                 passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
             }
         }
-
+ 
         private static bool VerifyPasswordHash(string password, byte[] storedHash, byte[] storedSalt)
         {
             if (password == null) throw new ArgumentNullException("password");
-            if (string.IsNullOrWhiteSpace(password)) throw new ArgumentException("Value cannot be empty or has a white space ", "password");
-
-            if (storedHash.Length != 64) throw new ArgumentException("Invalid length", "passwordHash");
-            if (storedSalt.Length != 128) throw new ArgumentException("Invalid length of passwordsalt", "passwordHash");
-
+            if (string.IsNullOrWhiteSpace(password)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "password");
+            if (storedHash.Length != 64) throw new ArgumentException("Invalid length of password hash (64 bytes expected).", "passwordHash");
+            if (storedSalt.Length != 128) throw new ArgumentException("Invalid length of password salt (128 bytes expected).", "passwordHash");
+ 
             using (var hmac = new System.Security.Cryptography.HMACSHA512(storedSalt))
             {
                 var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-                for(int i = 0; i <computedHash.Length; i++)
+                for (int i = 0; i < computedHash.Length; i++)
                 {
                     if (computedHash[i] != storedHash[i]) return false;
                 }
             }
-
-            return false;
+ 
+            return true;
         }
     }
 }

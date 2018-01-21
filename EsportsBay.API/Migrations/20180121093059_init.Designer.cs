@@ -11,7 +11,7 @@ using System;
 namespace EsportsBay.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20180118101001_init")]
+    [Migration("20180121093059_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -68,7 +68,13 @@ namespace EsportsBay.API.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("DisplayName");
+
+                    b.Property<string>("Game");
+
+                    b.Property<string>("ImgUrl");
+
+                    b.Property<string>("Language");
 
                     b.Property<string>("Url");
 
@@ -82,7 +88,7 @@ namespace EsportsBay.API.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("TeamName");
+                    b.Property<string>("Name");
 
                     b.Property<int?>("TournamentId");
 
@@ -120,15 +126,11 @@ namespace EsportsBay.API.Migrations
 
                     b.Property<string>("LastName");
 
-                    b.Property<string>("Login");
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("Password");
-
                     b.Property<byte[]>("PasswordHash");
 
                     b.Property<byte[]>("PasswordSalt");
+
+                    b.Property<string>("Username");
 
                     b.HasKey("Id");
 
