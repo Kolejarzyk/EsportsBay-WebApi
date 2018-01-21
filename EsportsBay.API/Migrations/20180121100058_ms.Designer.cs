@@ -11,9 +11,10 @@ using System;
 namespace EsportsBay.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20180121100058_ms")]
+    partial class ms
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,9 +50,9 @@ namespace EsportsBay.API.Migrations
 
                     b.Property<DateTime>("StartDate");
 
-                    b.Property<string>("Team1");
+                    b.Property<string>("TeamName1");
 
-                    b.Property<string>("Team2");
+                    b.Property<string>("TeamName2");
 
                     b.HasKey("Id");
 

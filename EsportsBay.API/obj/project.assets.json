@@ -13196,12 +13196,15 @@
   },
   "project": {
     "version": "1.0.0",
+    "restoreSettings": {
+      "hideWarningsAndErrors": true
+    },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kolejarz\\Documents\\Visual Studio 2017\\Projects\\EsportsBay.API\\EsportsBay.API\\EsportsBay.API.csproj",
+      "projectUniqueName": "C:\\Users\\Kolejarz\\Documents\\Project\\EsportsBay-WebApi\\EsportsBay.API\\EsportsBay.API.csproj",
       "projectName": "EsportsBay.API",
-      "projectPath": "C:\\Users\\Kolejarz\\Documents\\Visual Studio 2017\\Projects\\EsportsBay.API\\EsportsBay.API\\EsportsBay.API.csproj",
+      "projectPath": "C:\\Users\\Kolejarz\\Documents\\Project\\EsportsBay-WebApi\\EsportsBay.API\\EsportsBay.API.csproj",
       "packagesPath": "C:\\Users\\Kolejarz\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kolejarz\\Documents\\Visual Studio 2017\\Projects\\EsportsBay.API\\EsportsBay.API\\obj\\",
+      "outputPath": "C:\\Users\\Kolejarz\\Documents\\Project\\EsportsBay-WebApi\\EsportsBay.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",

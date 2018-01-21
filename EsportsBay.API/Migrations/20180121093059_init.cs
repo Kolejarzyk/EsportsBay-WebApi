@@ -30,7 +30,10 @@ namespace EsportsBay.API.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
+                    DisplayName = table.Column<string>(nullable: true),
+                    Game = table.Column<string>(nullable: true),
+                    ImgUrl = table.Column<string>(nullable: true),
+                    Language = table.Column<string>(nullable: true),
                     Url = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -62,11 +65,9 @@ namespace EsportsBay.API.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
-                    Login = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    Password = table.Column<string>(nullable: true),
                     PasswordHash = table.Column<byte[]>(nullable: true),
-                    PasswordSalt = table.Column<byte[]>(nullable: true)
+                    PasswordSalt = table.Column<byte[]>(nullable: true),
+                    Username = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -79,7 +80,7 @@ namespace EsportsBay.API.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    TeamName = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
                     TournamentId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>

@@ -11,9 +11,10 @@ using System;
 namespace EsportsBay.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20180121095709_match")]
+    partial class match
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,11 +50,15 @@ namespace EsportsBay.API.Migrations
 
                     b.Property<DateTime>("StartDate");
 
-                    b.Property<string>("Team1");
+                    b.Property<int?>("Team1Id");
 
-                    b.Property<string>("Team2");
+                    b.Property<int?>("Team2Id");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Team1Id");
+
+                    b.HasIndex("Team2Id");
 
                     b.ToTable("Match");
                 });
@@ -130,6 +135,17 @@ namespace EsportsBay.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("User");
+                });
+
+            modelBuilder.Entity("EsportsBay.API.Model.Match", b =>
+                {
+                    b.HasOne("EsportsBay.API.Model.Team", "Team1")
+                        .WithMany()
+                        .HasForeignKey("Team1Id");
+
+                    b.HasOne("EsportsBay.API.Model.Team", "Team2")
+                        .WithMany()
+                        .HasForeignKey("Team2Id");
                 });
 
             modelBuilder.Entity("EsportsBay.API.Model.Team", b =>

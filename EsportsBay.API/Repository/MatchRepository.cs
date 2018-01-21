@@ -14,14 +14,12 @@ namespace EsportsBay.API.Repository
         {
         }
 
-        public void SearchByTeam(string teamName)
+        public IEnumerable<Match> SearchByTeam(string teamName)
         {
-            throw new NotImplementedException();
+            return _context.Set<Match>().Where(x => x.Team1.Equals(teamName) || x.Team2.Equals(teamName))
+            .OrderBy(o => o.StartDate).ToList();
         }
 
-        public void SearchByTeam(string teamName, string teamName2)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

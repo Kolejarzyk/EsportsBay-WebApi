@@ -33,7 +33,7 @@ namespace EsportsBay.API.Controllers
             return match;
         }
 
-        [HttpGet("{id}", Name = "GetMatch")]
+        [HttpGet("{id:int}", Name = "GetMatch")]
         public IActionResult GetById(long id)
         {
             var item = _repository.Get(id);
@@ -77,6 +77,16 @@ namespace EsportsBay.API.Controllers
             var model = _mapper.Map<MatchDto, Match>(user);
             _repository.Delete(model);
             return new NoContentResult();
+        }
+
+        [HttpGet("{teamName}")]
+        public IEnumerable<MatchDto> SearchMatch(string teamName)
+        {
+            var team = _repository.SearchByTeam(teamName);
+
+            var searchedTeam = _mapper.Map<IEnumerable<Match>, IEnumerable<MatchDto>>(team);
+
+            return searchedTeam;
         }
 
     }
