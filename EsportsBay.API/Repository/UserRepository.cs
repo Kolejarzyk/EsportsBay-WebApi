@@ -113,5 +113,10 @@ namespace EsportsBay.API.Repository
  
             return true;
         }
+
+        public IEnumerable<User> SearchByName(string name)
+        {
+            return _context.Set<User>().Where(x => x.Username.Equals(name)).OrderBy(o => o.Username).ToList();
+        }
     }
 }
