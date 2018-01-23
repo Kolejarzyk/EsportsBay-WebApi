@@ -11,5 +11,6 @@ namespace EsportsBay.API.Repository
         User Authenticate(string username, string password);
         User Create(User user, string password);
         void Update(User userParam, string password = null);
+        IEnumerable<User> SearchByName(string name);
     }
 }

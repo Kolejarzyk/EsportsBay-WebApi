@@ -8,6 +8,6 @@ namespace EsportsBay.API.Repository
 {
     public interface ILogRepository : IRepository<Log>
     {
-        void SearchByDate(DateTime date);
+        IEnumerable<Log> SearchByDate(DateTime date);
     }
 }

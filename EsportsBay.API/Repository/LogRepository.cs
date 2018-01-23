@@ -12,9 +12,10 @@ namespace EsportsBay.API.Repository
         public LogRepository(DataContext context) : base(context)
         {
         }
-        public void SearchByDate(DateTime date)
+       
+        public IEnumerable<Log> SearchByDate(DateTime date)
         {
-            throw new NotImplementedException();
+            return _context.Set<Log>().Where(x => x.Date.Equals(date)).OrderBy(o => o.Date).ToList();
         }
     }
 }
